@@ -11,7 +11,6 @@ const sortByOptions = {
 class SearchBar extends React.Component {
     constructor(props) {
         super(props);
-        this.getSortByClass = this.getSortByClass.bind(this);
         this.handleTermChange = this.handleTermChange.bind(this);
         this.handleLocationChange = this.handleLocationChange.bind(this);
         this.handleSearch = this.handleSearch.bind(this);
@@ -38,7 +37,9 @@ class SearchBar extends React.Component {
     }
 
     handleSortByChange(sortByOption) {
-        this.state.sortBy = this.setState(sortByOption);
+        this.setState({
+            sortBy: sortByOption
+        });
     }
 
     handleTermChange(event) {
@@ -63,7 +64,7 @@ class SearchBar extends React.Component {
             <div className="SearchBar">
                 <div className="SearchBar-sort-options">
                     <ul>
-                        {this.renderSortByOptions}
+                        {this.renderSortByOptions()}
                     </ul>
                 </div>
                 <div className="SearchBar-fields">
